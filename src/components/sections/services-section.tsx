@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { coreServices } from "@/data/services";
 import { motion } from "framer-motion";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -25,6 +26,8 @@ const cardVariants = {
 };
 
 export function ServicesSection() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <AnimatedSection
       id="services"
@@ -34,27 +37,43 @@ export function ServicesSection() {
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div
           className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 opacity-40 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 90, 0],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }
+              : undefined
+          }
         />
         <motion.div
           className="absolute -left-20 bottom-20 h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-100 to-blue-100 opacity-30 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  rotate: [0, -90, 0],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 25,
+                  repeat: Infinity,
+                  ease: "linear",
+                }
+              : undefined
+          }
         />
       </div>
 

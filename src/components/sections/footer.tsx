@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { footerColumns, contactItems, socialLinks } from "@/data/footer";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
@@ -25,6 +26,8 @@ const footerParticles = [
 ];
 
 export function SiteFooter() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <footer className="relative overflow-hidden border-t border-blue-400/30 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
       {/* Animated Grid Background */}
@@ -34,43 +37,60 @@ export function SiteFooter() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-[20%] left-[5%] h-96 w-96 rounded-full bg-blue-500/20 blur-[120px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 30, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  x: [0, 30, 0],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              : undefined
+          }
         />
         <motion.div
           className="absolute bottom-[10%] right-[10%] h-80 w-80 rounded-full bg-cyan-500/15 blur-[100px]"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.2, 0.4, 0.2],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? { duration: 10, repeat: Infinity, ease: "easeInOut" }
+              : undefined
+          }
         />
       </div>
 
       {/* Floating Particles */}
-      {footerParticles.map((particle, i) => (
-        <motion.div
-          key={i}
-          className="absolute h-1 w-1 rounded-full bg-blue-400/30"
-          style={{
-            left: particle.left,
-            top: particle.top,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0, 0.8, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-          }}
-        />
-      ))}
+      {allowContinuousMotion &&
+        footerParticles.map((particle, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-blue-400/30"
+            style={{
+              left: particle.left,
+              top: particle.top,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 0.8, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+            }}
+          />
+        ))}
 
       <div className="relative z-10">
         <div className="container grid gap-12 py-16 lg:grid-cols-[1fr_1.5fr]">
@@ -214,8 +234,16 @@ export function SiteFooter() {
             >
               © {new Date().getFullYear()} PNOW Healthcare. All rights reserved.
               <motion.span
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                animate={
+                  allowContinuousMotion
+                    ? { opacity: [0.5, 1, 0.5] }
+                    : undefined
+                }
+                transition={
+                  allowContinuousMotion
+                    ? { duration: 2, repeat: Infinity }
+                    : undefined
+                }
                 className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400"
               />
             </motion.p>

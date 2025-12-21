@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { staggerContainer } from "./motion-config";
 
 type AnimatedSectionProps = {
@@ -16,14 +16,16 @@ export function AnimatedSection({
   className,
   children,
 }: AnimatedSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.section
       id={id}
       className={className}
-      variants={staggerContainer()}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      variants={prefersReducedMotion ? undefined : staggerContainer()}
+      initial={prefersReducedMotion ? false : "hidden"}
+      whileInView={prefersReducedMotion ? undefined : "visible"}
+      viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.25 }}
     >
       {children}
     </motion.section>

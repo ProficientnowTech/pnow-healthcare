@@ -1,4 +1,5 @@
 import { AnimatedSection } from "@/components/animations/animated-section";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { fadeInUp } from "@/components/animations/motion-config";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,34 +12,52 @@ import { trustReasons } from "@/data/trust";
 import { motion } from "framer-motion";
 
 export function TrustSection() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <AnimatedSection className="relative overflow-hidden border-t border-slate-200 bg-white py-16 lg:py-24">
       {/* Animated background elements */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute -right-32 top-32 h-96 w-96 rounded-full bg-gradient-to-br from-blue-100/30 to-cyan-100/30 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.2, 1],
+                  x: [0, 30, 0],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+              : undefined
+          }
         />
         <motion.div
           className="absolute -left-32 bottom-32 h-96 w-96 rounded-full bg-gradient-to-tr from-cyan-100/30 to-blue-100/30 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -30, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  x: [0, -30, 0],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }
+              : undefined
+          }
         />
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { fadeInUp } from "@/components/animations/motion-config";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,8 @@ import { motion } from "framer-motion";
 import { processSteps } from "@/data/process";
 
 export function ProcessSection() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <AnimatedSection
       id="process"
@@ -18,28 +21,44 @@ export function ProcessSection() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute right-20 top-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+              : undefined
+          }
         />
         <motion.div
           className="absolute bottom-20 left-20 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }
+              : undefined
+          }
         />
       </div>
 
@@ -174,12 +193,20 @@ export function ProcessSection() {
                       >
                         <motion.div
                           className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-70"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
+                          animate={
+                            allowContinuousMotion
+                              ? { scale: [1, 1.2, 1] }
+                              : undefined
+                          }
+                          transition={
+                            allowContinuousMotion
+                              ? {
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }
+                              : undefined
+                          }
                         />
 
                         <div className="relative flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-blue-600 to-cyan-500 text-xl font-bold text-white shadow-xl">
@@ -189,12 +216,20 @@ export function ProcessSection() {
                         <motion.div
                           className="absolute inset-0 rounded-full border-2 border-blue-400"
                           initial={{ scale: 1, opacity: 0.5 }}
-                          animate={{ scale: 1.5, opacity: 0 }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                          }}
+                          animate={
+                            allowContinuousMotion
+                              ? { scale: 1.5, opacity: 0 }
+                              : undefined
+                          }
+                          transition={
+                            allowContinuousMotion
+                              ? {
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeOut",
+                                }
+                              : undefined
+                          }
                         />
                       </motion.div>
 
@@ -217,12 +252,20 @@ export function ProcessSection() {
                       >
                         <motion.div
                           className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-70"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
+                          animate={
+                            allowContinuousMotion
+                              ? { scale: [1, 1.2, 1] }
+                              : undefined
+                          }
+                          transition={
+                            allowContinuousMotion
+                              ? {
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }
+                              : undefined
+                          }
                         />
 
                         <div className="relative flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-xl font-bold text-white shadow-xl">
@@ -232,12 +275,20 @@ export function ProcessSection() {
                         <motion.div
                           className="absolute inset-0 rounded-full border-2 border-blue-400"
                           initial={{ scale: 1, opacity: 0.5 }}
-                          animate={{ scale: 1.5, opacity: 0 }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                          }}
+                          animate={
+                            allowContinuousMotion
+                              ? { scale: 1.5, opacity: 0 }
+                              : undefined
+                          }
+                          transition={
+                            allowContinuousMotion
+                              ? {
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeOut",
+                                }
+                              : undefined
+                          }
                         />
                       </motion.div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { fadeInUp } from "@/components/animations/motion-config";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -29,6 +30,8 @@ const specialtyParticles = [
 ];
 
 export function SpecialtiesSection() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <AnimatedSection
       id="specialties"
@@ -41,43 +44,60 @@ export function SpecialtiesSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-[10%] right-[10%] h-96 w-96 rounded-full bg-blue-500/20 blur-[120px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -30, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  x: [0, -30, 0],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              : undefined
+          }
         />
         <motion.div
           className="absolute bottom-[20%] left-[5%] h-80 w-80 rounded-full bg-cyan-500/15 blur-[100px]"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1.2, 1, 1.2],
+                  opacity: [0.2, 0.4, 0.2],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? { duration: 10, repeat: Infinity, ease: "easeInOut" }
+              : undefined
+          }
         />
       </div>
 
       {/* Floating Particles */}
-      {specialtyParticles.map((particle, i) => (
-        <motion.div
-          key={i}
-          className="absolute h-1 w-1 rounded-full bg-blue-400/30"
-          style={{
-            left: particle.left,
-            top: particle.top,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0, 0.8, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-          }}
-        />
-      ))}
+      {allowContinuousMotion &&
+        specialtyParticles.map((particle, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-blue-400/30"
+            style={{
+              left: particle.left,
+              top: particle.top,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 0.8, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+            }}
+          />
+        ))}
 
       <div className="container relative z-10 space-y-12">
         <motion.div className="space-y-6 text-center" variants={fadeInUp}>
@@ -146,10 +166,18 @@ export function SpecialtiesSection() {
                     "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)",
                   backgroundSize: "200% 200%",
                 }}
-                animate={{
-                  backgroundPosition: ["0% 0%", "100% 100%"],
-                }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                animate={
+                  allowContinuousMotion
+                    ? {
+                        backgroundPosition: ["0% 0%", "100% 100%"],
+                      }
+                    : undefined
+                }
+                transition={
+                  allowContinuousMotion
+                    ? { duration: 1.5, repeat: Infinity }
+                    : undefined
+                }
               />
 
               <div className="relative z-10">
@@ -188,10 +216,18 @@ export function SpecialtiesSection() {
               <CardHeader className="space-y-4 relative z-10 p-8">
                 <motion.div
                   className="inline-flex items-center gap-2 text-cyan-400 mb-2"
-                  animate={{
-                    x: [0, 5, 0],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={
+                    allowContinuousMotion
+                      ? {
+                          x: [0, 5, 0],
+                        }
+                      : undefined
+                  }
+                  transition={
+                    allowContinuousMotion
+                      ? { duration: 2, repeat: Infinity }
+                      : undefined
+                  }
                 >
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                   <span className="text-xs uppercase tracking-widest font-semibold">
@@ -227,10 +263,18 @@ export function SpecialtiesSection() {
               <CardHeader className="space-y-4 relative z-10 p-8">
                 <motion.div
                   className="inline-flex items-center gap-2 text-blue-400 mb-2"
-                  animate={{
-                    x: [0, 5, 0],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  animate={
+                    allowContinuousMotion
+                      ? {
+                          x: [0, 5, 0],
+                        }
+                      : undefined
+                  }
+                  transition={
+                    allowContinuousMotion
+                      ? { duration: 2, repeat: Infinity, delay: 0.5 }
+                      : undefined
+                  }
                 >
                   <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                   <span className="text-xs uppercase tracking-widest font-semibold">

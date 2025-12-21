@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedSection } from "@/components/animations/animated-section";
+import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { fadeInUp } from "@/components/animations/motion-config";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -8,6 +9,8 @@ import { securityColumns } from "@/data/security";
 import { motion } from "framer-motion";
 
 export function SecuritySection() {
+  const { allowContinuousMotion } = useMotionPreference();
+
   return (
     <AnimatedSection
       id="security"
@@ -17,28 +20,44 @@ export function SecuritySection() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           className="absolute right-20 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-blue-100/40 to-cyan-100/40 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+              : undefined
+          }
         />
         <motion.div
           className="absolute bottom-20 left-20 h-80 w-80 rounded-full bg-gradient-to-tr from-cyan-100/40 to-blue-100/40 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
+          animate={
+            allowContinuousMotion
+              ? {
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }
+              : undefined
+          }
+          transition={
+            allowContinuousMotion
+              ? {
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }
+              : undefined
+          }
         />
       </div>
 
