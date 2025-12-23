@@ -42,12 +42,12 @@ export function ComplianceHeroSection() {
             every step.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button className="rounded-2xl bg-blue-500 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/30">
+            <Button className="rounded-2xl px-7 py-4 text-base font-semibold shadow-lg">
               Request BAA Execution
             </Button>
             <Button
               variant="outline"
-              className="rounded-2xl border-2 border-blue-300/60 bg-white/5 px-7 py-4 text-base text-white backdrop-blur hover:bg-white/10"
+              className="rounded-2xl border border-white/40 bg-white/10 text-white hover:bg-white/20 px-7 py-4 text-base font-semibold shadow-lg backdrop-blur transition-colors"
             >
               Review Our Security Practices
             </Button>

@@ -184,11 +184,7 @@ export function AboutContactSection() {
                   {feedback.message}
                 </p>
               )}
-              <Button
-                className="w-full bg-blue-600 text-white shadow-md hover:bg-blue-700"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <Button className="w-full shadow-md" type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Submitting..." : "Schedule a call"}
               </Button>
             </form>

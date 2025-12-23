@@ -22,10 +22,10 @@ export const footerColumns = [
   {
     heading: "Legal",
     links: [
-      { label: "HIPAA Privacy Policy", href: "/hipaa-privacy" },
-      { label: "Data Security Policy", href: "/data-security-policy" },
-      { label: "Terms & Conditions", href: "/terms" },
-      { label: "Disclaimer", href: "/disclaimer" },
+      { label: "HIPAA Privacy Policy", href: "/legal/hipaa-privacy-policy" },
+      { label: "Data Security Policy", href: "/legal/data-security-policy" },
+      { label: "Terms & Conditions", href: "/legal/terms-and-conditions" },
+      { label: "Disclaimer", href: "/legal/disclaimer" },
     ],
   },
 ] as const;

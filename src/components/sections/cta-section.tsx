@@ -22,11 +22,11 @@ export function CtaSection() {
           {ctaContent.description}
         </p>
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-          <Button size="lg" className="gap-2 animate-pressable bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
+          <Button size="lg" className="gap-2 animate-pressable shadow">
             {ctaContent.primaryButton.text}
             <ArrowRight className="size-4" />
           </Button>
-          <Button size="lg" variant="outline" className="animate-pressable border-slate-300 text-slate-700">
+          <Button size="lg" variant="outline" className="animate-pressable">
             {ctaContent.secondaryButton.text}
           </Button>
         </div>

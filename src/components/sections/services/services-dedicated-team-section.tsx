@@ -94,7 +94,7 @@ export function ServicesDedicatedTeamSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <Button className="bg-blue-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600">
+          <Button className="px-8 py-4 text-lg font-semibold shadow-lg">
             Schedule Team Introduction
           </Button>
         </motion.div>

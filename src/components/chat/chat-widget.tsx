@@ -121,7 +121,7 @@ export function ChatWidget() {
               <button
                 aria-label="Minimize chat"
                 onClick={toggleOpen}
-                className="rounded-lg p-1 hover:bg-white/10 transition-colors"
+                className="rounded-lg p-1 text-white hover:bg-primary/30 transition-colors"
               >
                 <Minus className="h-4 w-4" />
               </button>
@@ -161,14 +161,14 @@ export function ChatWidget() {
               <div className="flex flex-wrap gap-2">
                 {quickPrompts.map((prompt) => (
                   <button
-                    key={prompt}
-                    type="button"
-                    onClick={() => handleSend(prompt)}
-                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-700 transition hover:border-blue-500 hover:text-blue-600"
-                  >
-                    {prompt}
-                  </button>
-                ))}
+                  key={prompt}
+                  type="button"
+                  onClick={() => handleSend(prompt)}
+                  className="rounded-full border border-primary/30 px-3 py-1 text-xs text-primary transition hover:bg-primary/10"
+                >
+                  {prompt}
+                </button>
+              ))}
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -188,7 +188,7 @@ export function ChatWidget() {
                 <button
                   type="button"
                   onClick={() => handleSend()}
-                  className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 p-2 text-white shadow hover:shadow-lg transition disabled:opacity-50"
+                  className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 p-2 text-primary-foreground shadow hover:from-blue-700 hover:to-cyan-600 hover:shadow-lg transition disabled:opacity-50"
                   aria-label="Send message"
                   disabled={isLoading}
                 >
@@ -207,7 +207,7 @@ export function ChatWidget() {
 
       <button
         onClick={toggleOpen}
-        className="flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-3 text-white shadow-2xl hover:shadow-blue-500/30 transition"
+        className="flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-3 text-primary-foreground shadow-2xl hover:from-blue-700 hover:to-cyan-600 hover:shadow-lg transition"
         aria-expanded={isOpen}
         aria-controls="chat-scroll-container"
       >

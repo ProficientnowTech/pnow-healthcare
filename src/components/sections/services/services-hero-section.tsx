@@ -49,10 +49,13 @@ export function ServicesHeroSection() {
           elevates accuracy, compliance, and cash flow.
         </motion.p>
         <div className="flex flex-wrap gap-3">
-          <Button className="animate-pressable bg-blue-500 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/30">
+          <Button className="animate-pressable px-7 py-4 text-base font-semibold shadow-lg">
             Discuss Your Coding Needs
           </Button>
-          <Button variant="outline" className="animate-pressable border-2 border-blue-300/60 bg-white/5 px-7 py-4 text-base text-white backdrop-blur hover:bg-white/10">
+          <Button
+            variant="outline"
+            className="animate-pressable border border-white/40 bg-white/10 text-white hover:bg-white/20 px-7 py-4 text-base font-semibold shadow-lg backdrop-blur"
+          >
             Download Service Overview
           </Button>
         </div>

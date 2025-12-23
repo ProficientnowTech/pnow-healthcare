@@ -49,7 +49,7 @@ export function ServicesAllServicesSection() {
         >
           <Badge variant="secondary" className="mb-4">All Services</Badge>
           <h2 className="mb-6 text-3xl font-semibold text-slate-900 lg:text-4xl">
-            Complete coding solutions tailored to your practice needs.
+            Complete coding solutions built for your practice needs.
           </h2>
           <p className="text-lg text-slate-600">
             From initial coding to final reimbursement, we handle every aspect

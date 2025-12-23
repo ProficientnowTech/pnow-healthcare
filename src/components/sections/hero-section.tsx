@@ -268,7 +268,7 @@ export default function HeroSection() {
             className="flex flex-wrap justify-center gap-4 lg:justify-start"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="rounded-2xl bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 bg-[length:200%_100%] px-8 py-6 text-base text-white shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 border border-blue-400/30 font-semibold group relative overflow-hidden">
+              <Button className="rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl group relative overflow-hidden">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   animate={
@@ -287,7 +287,7 @@ export default function HeroSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 variant="outline"
-                className="rounded-2xl border-2 border-blue-400/50 bg-white/5 backdrop-blur-xl px-8 py-6 text-base text-white shadow-xl hover:bg-white/10 hover:border-blue-400 transition-all font-semibold"
+                className="rounded-2xl border border-white/40 bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-base font-semibold shadow-lg transition-all"
               >
                 Book a Call
               </Button>
@@ -368,11 +368,9 @@ export default function HeroSection() {
           />
 
           <div className="flex items-start gap-4 relative z-10">
-            <motion.div
-            className="rounded-2xl bg-gradient-to-br from-blue-500/30 to-cyan-500/30 p-4 text-blue-300 backdrop-blur-xl border border-blue-400/30"
-          >
-            <BarChart3 className="h-7 w-7" />
-          </motion.div>
+            <motion.div className="rounded-2xl bg-gradient-to-br from-blue-500/30 to-cyan-500/30 p-4 text-blue-300 backdrop-blur-xl border border-blue-400/30">
+              <BarChart3 className="h-7 w-7" />
+            </motion.div>
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80 font-semibold">
                 Live command center

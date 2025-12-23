@@ -210,7 +210,7 @@ export function ContactFormSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700"
+                  className="w-full"
                 >
                   {isSubmitting
                     ? "Submitting..."
@@ -260,7 +260,7 @@ export function ContactFormSection() {
             <CardTitle>Free Consultation</CardTitle>
             <CardDescription className="text-slate-600">
               Tell us about your volumes, specialties, and technology stack.
-              We’ll send a tailored ramp plan within 48 hours.
+              We’ll send a ramp plan within 48 hours.
             </CardDescription>
           </CardHeader>
           <CardContent>

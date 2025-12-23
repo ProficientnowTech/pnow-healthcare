@@ -19,10 +19,10 @@ export function ComplianceCtaSection() {
               Secure sample review available via encrypted portal after BAA execution.
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button className="bg-blue-600 text-white shadow-md hover:bg-blue-700">
+              <Button className="shadow-md">
                 Schedule Consultation <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-slate-300">
+              <Button variant="outline">
                 Request BAA Template
               </Button>
             </div>
@@ -30,7 +30,7 @@ export function ComplianceCtaSection() {
         </Card>
         <div className="grid gap-4">
           {[
-            { title: "Execute Your BAA", description: "Begin with a comprehensive BAA tailored to your organization’s requirements.", icon: FileKey2 },
+            { title: "Execute Your BAA", description: "Begin with a comprehensive BAA aligned to your organization’s requirements.", icon: FileKey2 },
             { title: "Compliance Consultation", description: "Discuss security and compliance needs with our experienced team.", icon: ShieldCheck },
             { title: "Secure Sample Submission", description: "Share sample charts through our encrypted portal for compliant evaluation.", icon: FileCheck2 },
           ].map((item) => (

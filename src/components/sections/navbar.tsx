@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { navLinks } from "@/data/navigation";
+import { Logo } from "@/components/brand/logo";
 
 export default function SiteNavbar() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -64,41 +66,16 @@ export default function SiteNavbar() {
             }}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <Link
+              href="/"
+              className="flex items-center gap-3 group shrink-0 transition-transform hover:scale-[1.01]"
+              aria-label="PNOW Healthcare home"
+            >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur-md opacity-50 group-hover:opacity-70 transition-opacity" />
-                <div className="relative w-10 h-10 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                    <path
-                      d="M12 6v12M6 12h12"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                    <circle cx="12" cy="12" r="3" fill="white" opacity="0.3" />
-                  </svg>
-                </div>
-              </div>
-              <div className="hidden sm:flex flex-col">
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent leading-tight">
-                  ProficientNow
-                </span>
-                <span className="text-[10px] text-gray-500 font-medium -mt-0.5 tracking-wide">
-                  HEALTHCARE
-                </span>
+                <Logo
+                  variant="word"
+                  className="relative h-8 w-auto sm:h-9"
+                />
               </div>
             </Link>
 
@@ -186,38 +163,38 @@ export default function SiteNavbar() {
                   </Link>
                 )
               ))}
-              <button className="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+              <Button className="h-auto px-3 py-2 text-sm font-medium shadow-sm">
                 More
-              </button>
+              </Button>
             </div>
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex items-center gap-3 shrink-0">
-              <Link
-                href="/contact"
-                className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              <Button
+                asChild
+                className="h-auto px-5 py-2.5 text-sm font-semibold shadow-lg"
               >
-                Get Started
-              </Link>
+                <Link href="/contact">Get Started</Link>
+              </Button>
             </div>
 
             {/* CTA Buttons - Tablet */}
             <div className="hidden md:flex lg:hidden items-center gap-2 shrink-0">
-              <button className="px-3 py-2 text-xs font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all duration-200">
+              <Button className="h-auto px-3 py-2 text-xs font-medium shadow-sm">
                 Sign In
-              </button>
-              <Link
-                href="/contact"
-                className="px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              </Button>
+              <Button
+                asChild
+                className="h-auto px-4 py-2 text-xs font-semibold shadow-lg"
               >
-                Get Started
-              </Link>
+                <Link href="/contact">Get Started</Link>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors shrink-0"
+              className="md:hidden p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors shrink-0"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -274,16 +251,17 @@ export default function SiteNavbar() {
                   </div>
                 ))}
                 <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-200">
-                  <button className="w-full px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all">
+                  <Button className="h-auto w-full px-4 py-2.5 text-sm font-medium">
                     Sign In
-                  </button>
-                  <Link
-                    href="/contact"
-                    className="w-full px-4 py-2.5 text-sm font-semibold text-white text-center bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:shadow-lg transition-all"
-                    onClick={() => setMobileMenuOpen(false)}
+                  </Button>
+                  <Button
+                    asChild
+                    className="h-auto w-full px-4 py-2.5 text-sm font-semibold text-center shadow-lg"
                   >
-                    Get Started
-                  </Link>
+                    <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                      Get Started
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
