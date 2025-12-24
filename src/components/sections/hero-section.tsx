@@ -287,7 +287,7 @@ export default function HeroSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 variant="outline"
-                className="rounded-2xl border border-white/40 bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-base font-semibold shadow-lg transition-all"
+                className="rounded-2xl border border-white/30 bg-white/10 text-white hover:border-white/50 hover:bg-white/15 hover:text-white px-8 py-6 text-base font-semibold shadow-lg transition-all"
               >
                 Book a Call
               </Button>

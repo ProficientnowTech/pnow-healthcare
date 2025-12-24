@@ -1,19 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useId, useMemo } from "react";
+import { motion, type Variants } from "framer-motion";
 import { ArrowLeft, Sparkles, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const pulse = {
+type Star = {
+  top: string;
+  left: string;
+  duration: number;
+  delay: number;
+};
+
+const pulse: Variants = {
   animate: {
     scale: [1, 1.05, 1],
     opacity: [0.8, 1, 0.8],
-    transition: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
+    transition: { duration: 2.4, repeat: Infinity, ease: "easeInOut" as const },
   },
 };
 
 export default function NotFound() {
+  const seed = useId();
+
+  const stars = useMemo<Star[]>(() => {
+    const base = Array.from(seed).reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const pseudoRandom = (n: number) => {
+      const x = Math.sin(n) * 10000;
+      return x - Math.floor(x);
+    };
+
+    return Array.from({ length: 50 }).map((_, i) => {
+      const s1 = pseudoRandom(base + i * 1.3);
+      const s2 = pseudoRandom(base + i * 2.7);
+      const s3 = pseudoRandom(base + i * 3.9);
+
+      return {
+        top: `${s1 * 100}%`,
+        left: `${s2 * 100}%`,
+        duration: 2.5 + s3 * 2,
+        delay: s2 * 1.5,
+      };
+    });
+  }, [seed]);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-sky-50 to-blue-100 text-slate-900">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-30" />
@@ -33,22 +64,22 @@ export default function NotFound() {
 
       {/* Stars */}
       <div className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 50 }).map((_, i) => (
+        {stars.map((star, i) => (
           <motion.span
             key={i}
             className="absolute h-1 w-1 rounded-full bg-blue-400"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: star.top,
+              left: star.left,
             }}
             animate={{
               opacity: [0.2, 1, 0.2],
               y: [-5, 5, -5],
             }}
             transition={{
-              duration: 2.5 + Math.random() * 2,
+              duration: star.duration,
               repeat: Infinity,
-              delay: Math.random() * 1.5,
+              delay: star.delay,
             }}
           />
         ))}
