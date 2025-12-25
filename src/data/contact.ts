@@ -12,10 +12,7 @@ export const contactInfo = {
   salesPhone: "(800) 555-9082",
   salesEmail: "hello@pnowhealth.com",
   businessHours: "Monday–Friday, 8am–7pm CT",
-  office: {
-    name: "Headquarters",
-    address: ["500 Market Street", "Suite 1800", "Chicago, IL 60601"],
-  },
+ 
 };
 
 export const contactFormFields: ContactFieldConfig[] = [

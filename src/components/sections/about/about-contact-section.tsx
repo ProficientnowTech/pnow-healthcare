@@ -69,7 +69,7 @@ export function AboutContactSection() {
       setFeedback({
         type: "success",
         message:
-          "Thanks for reaching out. Our team will reply within one business day.",
+          "We appreciate you reaching out. A member of our team will review your details and contact you soon to discuss how we can assist you.",
       });
     } catch (error) {
       const message =

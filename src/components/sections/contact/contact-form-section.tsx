@@ -80,7 +80,7 @@ export function ContactFormSection() {
       setFeedback({
         type: "success",
         message:
-          "Thanks for reaching out. Our team will reply within one business day.",
+          "We appreciate you reaching out. A member of our team will review your details and contact you soon to discuss how we can assist you.",
       });
     } catch (error) {
       const message =
@@ -105,7 +105,10 @@ export function ContactFormSection() {
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <div className="grid gap-4 md:grid-cols-2">
                   <FormField
                     control={form.control}
@@ -242,25 +245,14 @@ export function ContactFormSection() {
             <p>{contactInfo.businessHours}</p>
           </CardContent>
         </Card>
-        <Card className="border-slate-200 bg-white">
-          <CardHeader>
-            <CardTitle>{contactInfo.office.name}</CardTitle>
-            <CardDescription className="text-slate-600">
-              Office (by appointment)
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-sm text-slate-600">
-            {contactInfo.office.address.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-          </CardContent>
-        </Card>
+        
         <Card className="border-slate-200 bg-gradient-to-br from-white to-blue-50">
           <CardHeader>
             <CardTitle>Free Consultation</CardTitle>
             <CardDescription className="text-slate-600">
-              Tell us about your volumes, specialties, and technology stack.
-              We’ll send a ramp plan within 48 hours.
+              Tell us about your volumes, specialties, and current setup. We’ll
+              evaluate your needs and walk you through a clear, practical path
+              forward.
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -9,6 +9,111 @@ import { ArrowRight, BarChart3, Sparkles } from "lucide-react";
 import { heroStats, heroMetrics, floatingIcons } from "@/data/hero";
 import { useMotionPreference } from "@/components/animations/use-motion-preference";
 
+const CALENDLY_WIDGET_SRC =
+  "https://assets.calendly.com/assets/external/widget.js";
+const CALENDLY_WIDGET_CSS =
+  "https://assets.calendly.com/assets/external/widget.css";
+const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ||
+  "https://calendly.com/pnowhealth/free-consultation";
+
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
+
+let calendlyCssPromise: Promise<void> | null = null;
+let calendlyScriptPromise: Promise<void> | null = null;
+
+const loadCalendlyCss = () => {
+  if (typeof window === "undefined") {
+    return Promise.resolve();
+  }
+
+  if (calendlyCssPromise) {
+    return calendlyCssPromise;
+  }
+
+  const existingLink = document.querySelector<HTMLLinkElement>(
+    'link[data-calendly="widget-css"]'
+  );
+  if (existingLink) {
+    calendlyCssPromise = Promise.resolve();
+    return calendlyCssPromise;
+  }
+
+  calendlyCssPromise = new Promise((resolve, reject) => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = CALENDLY_WIDGET_CSS;
+    link.dataset.calendly = "widget-css";
+    link.onload = () => resolve();
+    link.onerror = () => reject(new Error("Calendly stylesheet failed to load"));
+    document.head.appendChild(link);
+  });
+
+  return calendlyCssPromise;
+};
+
+const loadCalendlyScript = () => {
+  if (typeof window === "undefined" || window.Calendly) {
+    return Promise.resolve();
+  }
+
+  if (calendlyScriptPromise) {
+    return calendlyScriptPromise;
+  }
+
+  calendlyScriptPromise = new Promise((resolve, reject) => {
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[data-calendly="widget"]'
+    );
+
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(), { once: true });
+      existingScript.addEventListener(
+        "error",
+        () => reject(new Error("Calendly widget failed to load")),
+        { once: true }
+      );
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = CALENDLY_WIDGET_SRC;
+    script.async = true;
+    script.dataset.calendly = "widget";
+    script.onload = () => resolve();
+    script.onerror = () =>
+      reject(new Error("Calendly widget failed to load"));
+    document.body.appendChild(script);
+  });
+
+  return calendlyScriptPromise;
+};
+
+const loadCalendlyWidget = () =>
+  Promise.all([loadCalendlyCss(), loadCalendlyScript()]).then(() => {});
+
+const triggerCalendlyPopup = async (url: string = CALENDLY_URL) => {
+  if (!url) return;
+
+  try {
+    await loadCalendlyWidget();
+    if (window.Calendly?.initPopupWidget) {
+      window.Calendly.initPopupWidget({ url });
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  } catch (error) {
+    console.error("Calendly popup failed, redirecting instead.", error);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+};
+
 const heroParticles = [
   { left: "8%", top: "18%", duration: 3.6, delay: 0.1 },
   { left: "18%", top: "32%", duration: 4.1, delay: 0.2 },
@@ -37,6 +142,13 @@ export default function HeroSection() {
     useMotionPreference();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    // Preload Calendly so the first click opens instantly.
+    loadCalendlyWidget().catch((error) =>
+      console.warn("Calendly prefetch failed; will retry on click.", error)
+    );
+  }, []);
 
   const floatingIconOffsets = [
     {
@@ -270,24 +382,28 @@ export default function HeroSection() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                asChild
+                type="button"
+                onClick={() => {
+                  console.log("Hero CTA clicked: opening Calendly popup");
+                  triggerCalendlyPopup();
+                }}
                 className="rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl group relative overflow-hidden"
               >
-                <Link href="/contact">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={
-                      allowContinuousMotion ? { x: ["-200%", "200%"] } : undefined
-                    }
-                    transition={
-                      allowContinuousMotion
-                        ? { duration: 3, repeat: Infinity, ease: "linear" }
-                        : undefined
-                    }
-                  />
-                  <span className="relative">Get a Free Consultation</span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+                  animate={
+                    allowContinuousMotion ? { x: ["-200%", "200%"] } : undefined
+                  }
+                  transition={
+                    allowContinuousMotion
+                      ? { duration: 3, repeat: Infinity, ease: "linear" }
+                      : undefined
+                  }
+                />
+                <span className="relative flex items-center">
+                  Get a Free Consultation
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative" />
-                </Link>
+                </span>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
