@@ -5,10 +5,9 @@ import { Badge } from "@/components/ui/badge";
 
 export function BlogsPage() {
   return (
-    <main className="bg-white  text-slate-900">
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 pt-[50px] to-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(14,165,233,0.12),transparent_25%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-24 space-y-6">
+    <main className="bg-white text-slate-900">
+      <section className="relative pt-[50px]">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-24 space-y-6">
           <Badge className="bg-blue-50 text-blue-700 border border-blue-200 w-fit px-4 py-2">
             Insights
           </Badge>
@@ -23,9 +22,8 @@ export function BlogsPage() {
         </div>
       </section>
 
-      <section className="relative  pb-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(59,130,246,0.08),transparent_35%),radial-gradient(circle_at_10%_70%,rgba(14,165,233,0.06),transparent_30%),radial-gradient(circle_at_90%_70%,rgba(147,197,253,0.08),transparent_30%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 space-y-10 md:space-y-14">
+      <section className="relative pb-20">
+        <div className="mx-auto max-w-6xl px-6 space-y-10 md:space-y-14">
           {blogs.map((post, index) => (
             <article
               key={post.id}
