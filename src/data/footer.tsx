@@ -1,4 +1,17 @@
-import { Linkedin, Mail, PhoneCall, Twitter } from "lucide-react";
+import type { SVGProps } from "react";
+import { Linkedin, Mail, PhoneCall } from "lucide-react";
+
+const XIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    role="img"
+    aria-label="X logo"
+    {...props}
+  >
+    <path d="M3 3h4.61L12 8.23 16.39 3H21l-7 8.04L21 21h-4.61L12 15.77 7.61 21H3l7-8.04L3 3z" />
+  </svg>
+);
 
 export const footerColumns = [
   {
@@ -47,7 +60,7 @@ export const socialLinks = [
     icon: Linkedin,
   },
   {
-    label: "Twitter",
-    icon: Twitter,
+    label: "X",
+    icon: XIcon,
   },
 ] as const;
