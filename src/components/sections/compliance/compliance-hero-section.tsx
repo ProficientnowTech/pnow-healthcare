@@ -144,10 +144,12 @@ export function ComplianceHeroSection() {
             </Button>
             <Button
               variant="outline"
-              asChild
               className="border border-white/30 bg-white/10 px-7 py-4 text-base font-semibold text-white shadow-xl backdrop-blur transition hover:border-white/50 hover:bg-white/15 hover:text-white"
+              asChild
             >
-              <Link href="/compliance">Review Our Security Practices</Link>
+              <a href="/ProficientNow-Security-Practices.pdf" download>
+                Review Our Security Practices
+              </a>
             </Button>
           </motion.div>
         </div>

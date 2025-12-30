@@ -20,9 +20,9 @@ const fade = {
 };
 
 const highlights = [
-  "Board-certified coders by specialty",
-  "Payer-specific edits baked in",
-  "Clinical QA on every batch",
+  "Specialty-Focused Coding Expertise",
+  "Documentation-Driven Coding Standards",
+  "Built-In QA & Audit Readiness",
 ];
 
 const stats = [
@@ -35,7 +35,7 @@ export function SpecialtiesPage() {
   const { allowContinuousMotion } = useMotionPreference();
 
   return (
-    <main className="pt-[50px] text-slate-900">
+    <main className=" text-slate-900">
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-15" />
@@ -167,7 +167,9 @@ export function SpecialtiesPage() {
                 asChild
                 className="border border-white/30 bg-white/10 px-7 py-4 text-base font-semibold text-white shadow-xl backdrop-blur transition hover:border-white/50 hover:bg-white/15 hover:text-white"
               >
-                <Link href="/specialties">Download specialty matrix</Link>
+                <a href="/ProficientNow-Specialty-Matrix.pdf" download>
+                  Download specialty matrix
+                </a>
               </Button>
             </motion.div>
           </div>

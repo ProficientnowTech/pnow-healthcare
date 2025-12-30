@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contactInfo } from "@/data/contact";
+import { preloadCalendly, triggerCalendlyPopup } from "@/lib/calendly";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -57,6 +58,10 @@ export function ContactFormSection() {
       message: "",
     },
   });
+
+  useEffect(() => {
+    preloadCalendly();
+  }, []);
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -256,7 +261,7 @@ export function ContactFormSection() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button className="w-full animate-pressable">
+            <Button className="w-full animate-pressable" type="button" onClick={() => triggerCalendlyPopup()}>
               Book Time with Sales
             </Button>
           </CardContent>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -19,6 +19,7 @@ import {
   Target,
 } from "lucide-react";
 import type { Service } from "@/data/services-data";
+import { preloadCalendly, triggerCalendlyPopup } from "@/lib/calendly";
 
 const fade = {
   hidden: { opacity: 0, y: 30 },
@@ -73,6 +74,10 @@ interface ServiceDetailPageProps {
 
 export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
   const IconComponent = iconMap[service.iconName as IconKey] ?? Activity;
+
+  useEffect(() => {
+    preloadCalendly();
+  }, []);
 
   return (
     <main className=" text-slate-900 bg-slate-50">
@@ -164,8 +169,9 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
                 animate={fade.show}
                 transition={{ delay: 0.2 }}
               >
-                <Link
-                  href="/contact"
+                <button
+                  type="button"
+                  onClick={() => triggerCalendlyPopup()}
                   className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-blue-500/40 transition-all hover:scale-105 hover:shadow-blue-500/60"
                 >
                   <span className="relative z-10 flex items-center gap-2">
@@ -173,13 +179,14 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 transition-opacity group-hover:opacity-100" />
-                </Link>
-                <Link
-                  href="/contact"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => triggerCalendlyPopup()}
                   className="rounded-xl border-2 border-blue-300/40 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all hover:scale-105 hover:border-blue-300/60 hover:bg-white/20"
                 >
                   Schedule Consultation
-                </Link>
+                </button>
               </motion.div>
 
               <motion.div
@@ -594,8 +601,9 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               services can benefit your organization.
             </p>
             <div className="flex flex-wrap justify-center gap-6 pt-4">
-              <Link
-                href="/contact"
+              <button
+                type="button"
+                onClick={() => triggerCalendlyPopup()}
                 className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-10 py-5 text-lg font-bold text-white shadow-xl transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30"
               >
                 <span className="relative z-10 flex items-center gap-3">
@@ -603,13 +611,14 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 transition-opacity group-hover:opacity-100" />
-              </Link>
-              <Link
-                href="/contact"
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerCalendlyPopup()}
                 className="rounded-2xl border-2 border-blue-200 bg-white px-10 py-5 text-lg font-bold text-blue-700 shadow-sm transition-all hover:scale-105 hover:border-blue-400 hover:shadow-lg"
               >
                 Schedule a Call
-              </Link>
+              </button>
             </div>
           </motion.div>
         </div>
