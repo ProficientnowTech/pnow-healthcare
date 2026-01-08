@@ -1,7 +1,7 @@
 import { BarChart3, CheckCircle2, Shield, Zap } from "lucide-react";
 
 export const heroStats = [
-  { label: "Coding Accuracy", value: "99.8%" },
+  { label: "Coding Accuracy (QA verified)", value: "95%+" },
   { label: "Average TAT", value: "24hrs" },
   { label: "Years Experience", value: "15+" },
 ] as const;
@@ -9,8 +9,8 @@ export const heroStats = [
 export const heroMetrics = [
   {
     label: "Accuracy Rate",
-    value: "99.8%",
-    helper: "Industry-leading precision",
+    value: "95%+",
+    helper: "QA-verified baseline (>=95%) across all specialties",
   },
   { label: "Avg. Turnaround", value: "24h", helper: "Fast processing times" },
   { label: "Compliance Score", value: "100%", helper: "Full HIPAA adherence" },

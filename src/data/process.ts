@@ -41,4 +41,11 @@ export const processSteps = [
       "Regular reporting, performance reviews, and process improvements ensure sustained excellence and evolving best practices.",
     side: "right",
   },
+  {
+    number: 7,
+    title: "Service Delivery",
+    description:
+      "At ProficientNow, our service delivery isn't just a process - it's a promise.",
+    side: "left",
+  },
 ] as const;

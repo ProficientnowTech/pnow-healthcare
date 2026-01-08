@@ -76,29 +76,60 @@ export function Logo({ className, variant = "mark", tone = "brand" }: LogoProps)
 
   return (
     <svg
-      viewBox="0 0 39 47"
+      viewBox="0 0 140 150"
       role="img"
       aria-label="PNOW monogram"
-      className={cn("h-10 w-auto", className)}
+      className={cn("h-12 w-auto", className)}
     >
       <defs>
-        <linearGradient
-          id="logoShieldGradientMark"
-          x1="0"
-          y1="23.5"
-          x2="39"
-          y2="23.5"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#22c55e" />
-          <stop offset="1" stopColor="#10b981" />
+        <linearGradient id="logoMarkLeft" x1="10" y1="18" x2="80" y2="118" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#0aa964" />
+          <stop offset="1" stopColor="#1fcb64" />
+        </linearGradient>
+        <linearGradient id="logoMarkRight" x1="58" y1="38" x2="132" y2="122" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#2ac55a" />
+          <stop offset="1" stopColor="#74d93a" />
+        </linearGradient>
+        <linearGradient id="logoMarkShieldFill" x1="98" y1="8" x2="128" y2="52" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#1fcb64" />
+          <stop offset="1" stopColor="#74d93a" />
+        </linearGradient>
+        <linearGradient id="logoMarkShieldStroke" x1="98" y1="8" x2="128" y2="52" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#0aa964" />
+          <stop offset="1" stopColor="#1fcb64" />
         </linearGradient>
       </defs>
+
+      {/* Left stroke of the monogram */}
+      <path
+        d="M22 18c0-2.2 1.8-4 4-4h46c2.8 0 4.6 2.8 3.7 5.3L50.7 120H30a4 4 0 0 1-4-4V18Z"
+        fill={tone === "light" ? "white" : "url(#logoMarkLeft)"}
+      />
+
+      {/* Right curve of the monogram with embedded lightning */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M0.807297 6.31293C5.91972 5.71942 10.377 3.44043 13.7873 1H25.2126C28.623 3.44043 33.0802 5.71942 38.1927 6.31293C38.6551 6.36662 39 6.7546 39 7.22134V23.4748C39 34.4973 27.8396 43.7594 19.5 46C11.1604 43.7594 0 34.4973 0 23.4748V7.22134C0 6.7546 0.344812 6.36662 0.807297 6.31293ZM2.73651 8.79872V23.4748C2.73651 24.7207 2.90919 25.9555 3.22937 27.1585C5.11379 34.2391 12.5543 40.9723 19.499 43.1434C23.8469 41.7775 28.2437 38.6102 31.1977 35.271C34.0769 32.0163 36.2634 27.918 36.2634 23.4748V8.79872C31.9835 8.02448 27.9554 6.19567 24.3542 3.7439H14.6458C11.0446 6.19567 7.01646 8.02448 2.73651 8.79872ZM4.56091 10.2853V23.4748C4.56091 24.5603 4.71315 25.6388 4.9921 26.687C6.67447 33.0086 13.3489 39.0707 19.4974 41.2168C23.3225 39.8732 27.193 37.0412 29.8328 34.0572C32.4059 31.1484 34.439 27.4533 34.439 23.4748V10.2853C30.6427 9.38482 27.0585 7.72284 23.8006 5.57317H15.1994C11.9415 7.72284 8.35721 9.38482 4.56091 10.2853ZM22.4222 13.1036H16.5779C16.3266 13.1036 16.1218 13.3091 16.1218 13.5609V18.198H11.497C11.2458 18.198 11.0409 18.4035 11.0409 18.6554V24.5152C11.0409 24.7671 11.2458 24.9726 11.497 24.9726H16.1218V29.6097C16.1218 29.8616 16.3266 30.067 16.5779 30.067H22.4222C22.6734 30.067 22.8783 29.8616 22.8783 29.6097V24.9726H27.503C27.7542 24.9726 27.9591 24.7671 27.9591 24.5152V18.6554C27.9591 18.4035 27.7542 18.198 27.503 18.198H22.8783V13.5609C22.8782 13.3091 22.6734 13.1036 22.4222 13.1036Z"
-        fill={tone === "light" ? "white" : "url(#logoShieldGradientMark)"}
+        d="M54.5 36c0-1.7 1.3-3 3-3h40c17.7 0 32 14.3 32 32S115.2 97 97.5 97h-7.4c-1.4 0-2.6-0.7-3.4-1.8l-14.3-20c-1.2-1.7-3.7-1.4-4.4 0.6L56.1 114c-0.6 1.9 0.8 3.8 2.8 3.8H80c26.5 0 48-21.5 48-48s-21.5-48-48-48H60.5c-1.7 0-3 1.3-3 3Z"
+        fill={tone === "light" ? "white" : "url(#logoMarkRight)"}
+      />
+
+      {/* Shield with medical cross */}
+      <path
+        d="M100.2 12.5c-1.1 0-2 0.9-2 2v13.6c0 8.3 5.5 15.6 13.6 17.8 8.1-2.2 13.6-9.5 13.6-17.8V14.5c0-1.1-0.9-2-2-2h-7.8c-0.5 0-1-0.1-1.4-0.4l-1.8-1.1a4 4 0 0 0-4.2 0l-1.8 1.1c-0.4 0.3-0.9 0.4-1.4 0.4h-2.8Z"
+        fill={tone === "light" ? "white" : "url(#logoMarkShieldFill)"}
+        stroke="white"
+        strokeWidth="5"
+      />
+      <path
+        d="M100.2 12.5c-1.1 0-2 0.9-2 2v13.6c0 8.3 5.5 15.6 13.6 17.8 8.1-2.2 13.6-9.5 13.6-17.8V14.5c0-1.1-0.9-2-2-2h-7.8c-0.5 0-1-0.1-1.4-0.4l-1.8-1.1a4 4 0 0 0-4.2 0l-1.8 1.1c-0.4 0.3-0.9 0.4-1.4 0.4h-2.8Z"
+        fill={tone === "light" ? "url(#logoMarkShieldFill)" : "url(#logoMarkShieldFill)"}
+        stroke={tone === "light" ? "url(#logoMarkShieldStroke)" : "url(#logoMarkShieldStroke)"}
+        strokeWidth="2.5"
+      />
+      <path
+        d="M111.8 20.5c-0.6 0-1.1 0.5-1.1 1.1v5.1h-5.1c-0.6 0-1.1 0.5-1.1 1.1v3.4c0 0.6 0.5 1.1 1.1 1.1h5.1v5.1c0 0.6 0.5 1.1 1.1 1.1h3.4c0.6 0 1.1-0.5 1.1-1.1v-5.1h5.1c0.6 0 1.1-0.5 1.1-1.1v-3.4c0-0.6-0.5-1.1-1.1-1.1h-5.1v-5.1c0-0.6-0.5-1.1-1.1-1.1h-3.4Z"
+        fill={tone === "light" ? "#0F172A" : "#0F172A"}
       />
     </svg>
   );

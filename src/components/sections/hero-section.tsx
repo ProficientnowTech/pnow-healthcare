@@ -262,9 +262,8 @@ export default function HeroSection() {
               for US healthcare
             </h1>
             <p className="text-lg text-blue-100/80 md:text-xl max-w-2xl">
-              Embedded teams of CCS/CPC-certified coders, QA leads, and
-              analytics that keep your revenue cycle accurate, responsive, and
-              audit-ready.
+              Embedded teams of certified professionals from AAPC/AHIMA, quality
+              analysis, lead and analytics
             </p>
           </motion.div>
 

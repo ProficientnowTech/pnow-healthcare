@@ -11,7 +11,7 @@ type ContactFieldConfig = {
 export const contactInfo = {
   salesEmail: "info@pnowhealthcare.com",
   businessHours: "Monday–Friday, 8am–7pm CT",
-  address: "Sanali Info Park, 1st Floor, A Block, 8-2-120/113, Road No. 2, Banjara Hills, Hyderabad - 500034",
+  address: "1449 S Michigan Ave STE 13294, Chicago, IL 60605",
  
 };
 
