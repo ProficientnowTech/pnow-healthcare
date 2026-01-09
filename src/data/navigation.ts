@@ -29,14 +29,6 @@ export const navLinks: readonly NavLink[] = [
   {
     label: "Blog",
     href: "/blogs",
-    children: [
-      { label: "Industry Outlook 2025", href: "/blogs/medical-coding-close-of-2025" },
-      { label: "Lessons Learned 2025", href: "/blogs/medical-coding-2025-lessons-learned" },
-      { label: "Market Growth & Trends", href: "/blogs/medical-coding-market-growth-2025" },
-      { label: "Boardroom Priority", href: "/blogs/coding-accuracy-boardroom-priority-2025" },
-      { label: "Services in the USA", href: "/blogs/medical-coding-services-usa-2025" },
-      { label: "Outsourced Coding 2025", href: "/blogs/outsourced-medical-coding-services-2025" },
-    ],
   },
   // { label: "Process", href: "/process" },
   // { label: "Resources", href: "/why-choose-us#resources" },

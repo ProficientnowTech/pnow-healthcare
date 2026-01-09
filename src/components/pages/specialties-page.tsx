@@ -263,12 +263,20 @@ export function SpecialtiesPage() {
                   transition: { duration: 0.4 },
                 }}
               >
-                <Card className="border-slate-200 bg-white">
-                  <CardHeader>
+                <Card className="border-slate-200 bg-white relative overflow-hidden h-full">
+                  <CardHeader className="space-y-3 h-full">
                     <CardTitle>{specialty.title}</CardTitle>
                     <CardDescription className="text-slate-600">
                       {specialty.description}
                     </CardDescription>
+                    <Link
+                      href={`/specialties/${specialty.slug}`}
+                      className="inline-flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition-colors"
+                      aria-label={`Open ${specialty.title} specialty page`}
+                    >
+                      View details
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </CardHeader>
                 </Card>
               </motion.div>

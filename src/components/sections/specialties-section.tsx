@@ -4,6 +4,7 @@ import { AnimatedSection } from "@/components/animations/animated-section";
 import { useMotionPreference } from "@/components/animations/use-motion-preference";
 import { fadeInUp } from "@/components/animations/motion-config";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import {
   Card,
   CardHeader,
@@ -156,8 +157,18 @@ export function SpecialtiesSection() {
                 y: -8,
                 transition: { duration: 0.2 },
               }}
-              className="group relative rounded-2xl border border-blue-400/30 bg-white/5 backdrop-blur-xl p-6 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all overflow-hidden"
+              className="group h-full"
             >
+              <Link
+                href={`/specialties/${specialty.slug}`}
+                className="relative block h-full rounded-2xl border border-blue-400/30 bg-white/5 backdrop-blur-xl p-6 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all overflow-hidden"
+                aria-label={`Open ${specialty.title} specialty page`}
+              >
+                <div className="absolute top-4 right-4 inline-flex items-center justify-center rounded-full bg-white/10 px-3 py-2 text-xs font-semibold text-cyan-200 border border-white/20 shadow-lg">
+                  View
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
+
               {/* Shimmer effect */}
               <motion.div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -185,7 +196,7 @@ export function SpecialtiesSection() {
                   <p className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
                     {specialty.title}
                   </p>
-                  <ArrowRight className="w-5 h-5 text-cyan-400 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-5 h-5 text-cyan-400 opacity-80 transform translate-x-0 group-hover:translate-x-1 transition-all" />
                 </div>
                 <p className="text-sm text-blue-100/70 leading-relaxed">
                   {specialty.description}
@@ -194,6 +205,7 @@ export function SpecialtiesSection() {
 
               {/* Bottom gradient line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              </Link>
             </motion.div>
           ))}
         </motion.div>

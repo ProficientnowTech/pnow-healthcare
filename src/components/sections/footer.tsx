@@ -135,8 +135,11 @@ export function SiteFooter() {
 
             <div className="flex gap-3 pt-2">
               {socialLinks.map((social, i) => (
-                <motion.button
+                <motion.a
                   key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -157,7 +160,7 @@ export function SiteFooter() {
                     transition={{ duration: 0.6 }}
                   />
                   <social.icon className="size-5 relative z-10" />
-                </motion.button>
+                </motion.a>
               ))}
             </div>
           </motion.div>
