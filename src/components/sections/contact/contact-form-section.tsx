@@ -250,6 +250,10 @@ export function ContactFormSection() {
               {contactInfo.salesEmail}
             </p>
             <p className="flex items-center gap-2">
+              <span role="img" aria-label="phone">📞</span>
+              {contactInfo.phone}
+            </p>
+            <p className="flex items-center gap-2">
               <span role="img" aria-label="clock">⏰</span>
               {contactInfo.businessHours}
             </p>

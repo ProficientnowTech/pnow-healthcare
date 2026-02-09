@@ -10,6 +10,7 @@ type ContactFieldConfig = {
 
 export const contactInfo = {
   salesEmail: "info@pnowhealthcare.com",
+  phone: "+1 (408) 461-0096",
   businessHours: "Monday–Friday, 8am–7pm CT",
   address: "1449 S Michigan Ave STE 13294, Chicago, IL 60605",
  

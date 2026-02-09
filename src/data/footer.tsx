@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 export const footerColumns = [
   {
@@ -34,6 +34,10 @@ export const contactItems = [
   {
     label: "info@pnowhealthcare.com",
     icon: Mail,
+  },
+  {
+    label: "+1 (408) 461-0096",
+    icon: Phone,
   },
 ] as const;
 
